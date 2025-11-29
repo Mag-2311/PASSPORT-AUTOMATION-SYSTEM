@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Completed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background:  #021235;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+.container {
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 50px auto;
+}
+
+/* Progress Bar */
+.progress-container {
+    width: 60%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress-step {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+}
+
+.progress-step.active {
+    background-color: limegreen;
+}
+
+/* Input Styles */
+input, select {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: limegreen;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkgreen;
+}
+
+/* Navigation Bar */
+.navbar {
+    background: black;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar a {
+    color: rgb(236, 122, 122);
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+}
+
+.navbar a:hover {
+    background: gray;
+}
+
+    </style>
+</head>
+<body>
+    <p id="downloadMessage" style="display: none; color: green; font-weight: bold; margin-top: 10px;">
+        ✅ Passport Downloaded Successfully!
+    </p>
+    
+    <!-- Navigation -->
+    <div class="navbar">
+        <a href="">Home</a>
+        <a href="">Personal Details</a>
+        <a href="">Residential</a>
+        <a href="">Gov ID</a>
+        <a href="">Payment</a>
+    </div>
+
+    <!-- Completion Message -->
+    <div class="container">
+        <h2>🎉 Application Completed!</h2>
+        <p>Your passport application has been successfully submitted.</p>
+        <p>You will receive an email with further instructions.</p>
+        <button id="download-btn"><a href="{{ url_for('download_passport') }}" onclick="showDownloadMessage()" class="btn btn-primary">
+            Download e-Passport
+        </a>
+        </button>
+    </div>
+
+    <script>
+        function showDownloadMessage() {
+    setTimeout(function() {
+        document.getElementById('downloadMessage').style.display = 'block';
+    }, 1000);  // 1-second delay
+}
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("download-btn").addEventListener("click", function() {
+                window.location.href = "/download-passport";
+            });
+        });
+    </script>
+    
+
+</body>
+</html>

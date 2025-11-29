@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residential Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background:  #021235;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            margin: 50px auto;
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 60%;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .progress-step {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background-color: gray;
+            color: white;
+            font-weight: bold;
+        }
+
+        .progress-step.active {
+            background-color: limegreen;
+            box-shadow: 0px 0px 8px rgba(0, 255, 0, 0.8);
+        }
+
+        /* Input Styles */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        input, select {
+            width: 90%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            text-align: left;
+            box-sizing: border-box;
+            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.2);
+            color: rgb(71, 3, 73);;
+        }
+
+        input::placeholder {
+            color: rgb(71, 3, 73);;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Button Styling */
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            background: linear-gradient(to right, #00FF7F, #32CD32);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0px 4px 8px rgba(0, 255, 127, 0.5);
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #32CD32, #008000);
+            box-shadow: 0px 6px 12px rgba(0, 255, 127, 0.8);
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .navbar a {
+            color: rgb(236, 122, 122);;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <div class="navbar">
+        <a href="">Home</a>
+        <a href="">Personal Details</a>
+        <a href="">Residential</a>
+        <a href="">Gov ID</a>
+        <a href="">Payment</a>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-step active">1</div>
+        <div class="progress-step active">2</div>
+        <div class="progress-step">3</div>
+        <div class="progress-step">4</div>
+        <div class="progress-step">5</div>
+    </div>
+
+    <!-- Form -->
+    <div class="container">
+        <h2>Residential Details</h2>
+        <form action="/id-verification">
+
+            <div class="form-group">
+                <input type="text" name="address1" placeholder="Address Line 1" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="address2" placeholder="Address Line 2">
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="city" placeholder="City" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="state" placeholder="State" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="postal_code" placeholder="Postal Code" required>
+            </div>
+
+            <div class="form-group">
+                <select name="country" required>
+                    <option value="" disabled selected>Select Country</option>
+                    <option value="India">India</option>
+                    <option value="USA">USA</option>
+                    <option value="UK">UK</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Australia">Australia</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select name="residence_type" required>
+                    <option value="" disabled selected>Type of Residence</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Independent House">Independent House</option>
+                    <option value="Villa">Villa</option>
+                    <option value="Hostel">Hostel</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="number" name="years_at_address" placeholder="Years at Current Address" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="emergency_contact" placeholder="LandMark/Nearby Location" required>
+            </div>
+
+            <div class="form-group">
+                <input type="tel" name="alternate_phone" placeholder="Alternate Phone Number">
+            </div><br><br>
+
+            <div class="form-group">
+                <button type="submit">Next</button>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>

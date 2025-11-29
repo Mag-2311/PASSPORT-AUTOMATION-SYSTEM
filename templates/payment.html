@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background:  #021235;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            margin: 50px auto;
+        }
+
+        .progress-container {
+            width: 60%;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .progress-step {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background-color: gray;
+            color: rgb(43, 14, 14);
+            font-weight: bold;
+        }
+
+        .progress-step.active {
+            background-color: limegreen;
+            box-shadow: 0 0 10px limegreen;
+        }
+
+        input, select {
+            width: 90%;
+            padding: 12px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: rgb(71, 3, 73);
+            outline: none;
+            transition: 0.3s;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        input:hover, select:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 18px;
+            background: limegreen;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 10px limegreen;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: darkgreen;
+            box-shadow: 0 0 15px darkgreen;
+        }
+
+        .qr-container {
+            margin-top: 20px;
+        }
+
+        .qr-container img {
+            width: 150px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px white;
+        }
+
+
+         /* Navigation Bar */
+         .navbar {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .navbar a {
+            color: rgb(236, 122, 122);
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="">Home</a>
+        <a href="">Personal Details</a>
+        <a href="">Residential</a>
+        <a href="">Gov ID</a>
+        <a href="">Payment</a>
+    </div>
+
+    <div class="progress-container">
+        <div class="progress-step active">1</div>
+        <div class="progress-step active">2</div>
+        <div class="progress-step active">3</div>
+        <div class="progress-step active">4</div>
+        <div class="progress-step active">5</div>
+    </div>
+
+    <div class="container">
+        <h2>Payment</h2>
+        <form action="/success">
+            <h2>The Amount to be Paid:Rs 1500.00</h2>
+            <select required>
+                <option value="">Select Payment Method</option>
+                <option value="credit">Credit Card</option>
+                <option value="debit">Debit Card</option>
+                <option value="upi">UPI</option>
+                <option value="netbanking">Net Banking</option>
+            </select>
+            <input type="text" placeholder="Card/UPI ID" required>
+            <button type="submit">Proceed to Pay</button>
+        </form>
+
+        <div class="qr-container">
+            <h3>Scan QR Code for Payment</h3>
+            <img src="/static/Scanner.jpeg" alt="QR Code">
+        </div>
+    </div>
+
+</body>
+</html>

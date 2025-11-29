@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Details</title>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background:  #021235;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            margin: 50px auto;
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 60%;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .progress-step {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background-color: gray;
+            color: white;
+            font-weight: bold;
+        }
+
+        .progress-step.active {
+            background-color: limegreen;
+            box-shadow: 0px 0px 8px rgba(0, 255, 0, 0.8);
+        }
+
+        /* Input Styles */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        input, select, textarea {
+            width: 92%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            text-align: left;
+            box-sizing: border-box;
+            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.2);
+            color: rgb(71, 3, 73);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color:rgb(71, 3, 73);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+        }
+
+        textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        /* File Upload */
+        .file-upload {
+            width: 92%;
+            text-align: left;
+        }
+
+        /* Button Styling */
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            background: linear-gradient(to right, #00FF7F, #32CD32);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0px 4px 8px rgba(0, 255, 127, 0.5);
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #32CD32, #008000);
+            box-shadow: 0px 6px 12px rgba(0, 255, 127, 0.8);
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .navbar a {
+            color: rgb(236, 122, 122);
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    
+
+    <!-- Navigation -->
+    <div class="navbar">
+        <a href="">Home</a>
+        <a href="">Personal Details</a>
+        <a href="">Residential</a>
+        <a href="">Gov ID</a>
+        <a href="">Payment</a>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-step active">1</div>
+        <div class="progress-step">2</div>
+        <div class="progress-step">3</div>
+        <div class="progress-step">4</div>
+        <div class="progress-step">5</div>
+    </div>
+
+    <!-- Form -->
+    <div class="container">
+        <h2>Personal Details</h2>
+        <form id="personalDetailsForm" action="/personal-details" method="POST" enctype="multipart/form-data">
+            
+            <div class="form-group">
+                <input type="text" name="full_name" placeholder="Full Name" required>
+            </div>
+    
+            <div class="form-group">
+                <input type="date" name="dob" required>
+            </div>
+    
+            <div class="form-group">
+                <input type="text" name="nationality" placeholder="Nationality" required>
+            </div>
+    
+            <div class="form-group">
+                <select name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email Address" required>
+            </div>
+    
+            <div class="form-group">
+                <input type="tel" name="phone" placeholder="Phone Number" pattern="[0-9]{10}" required>
+            </div>
+    
+            <div class="form-group">
+                <input type="text" name="father_name" placeholder="Father's Name" required>
+            </div>
+    
+            <div class="form-group">
+                <input type="text" name="place_of_birth" placeholder="Place of Birth" required>
+            </div>
+    
+            <div class="form-group">
+                <textarea name="address" placeholder="Enter your full address" required></textarea>
+            </div>
+    
+            <div class="form-group file-upload">
+                <label>Passport Size Photo:</label>
+                <input type="file" name="passport_photo" accept="image/*" required>
+            </div>
+    
+            <div class="form-group file-upload">
+                <label>Signature Photo:</label>
+                <input type="file" name="signature_photo" accept="image/*" required>
+            </div>
+    
+            <br><br>
+    
+            <div class="form-group">
+                <button type="submit">Next</button>
+            </div>
+    
+        </form>
+    </div>
+    
+    </div>
+
+</body>
+</html>

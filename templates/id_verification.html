@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government ID Verification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background:  #021235;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            margin: 50px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .progress-container {
+            width: 60%;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .progress-step {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background-color: gray;
+            color: white;
+            font-weight: bold;
+        }
+
+        .progress-step.active {
+            background-color: limegreen;
+            box-shadow: 0 0 10px limegreen;
+        }
+
+        .input-box {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: rgb(71, 3, 73);
+            outline: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        input::placeholder {
+            color: rgb(71, 3, 73);
+        }
+
+        .file-upload {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .next-button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            font-size: 18px;
+            background: limegreen;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 10px limegreen;
+            transition: 0.3s ease-in-out;
+        }
+
+        .next-button:hover {
+            background: darkgreen;
+            box-shadow: 0 0 15px darkgreen;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar a {
+            color: rgb(236, 122, 122);
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="">Home</a>
+        <a href="">Personal Details</a>
+        <a href="">Residential</a>
+        <a href="">Gov ID</a>
+        <a href="">Payment</a>
+    </div>
+
+    <div class="progress-container">
+        <div class="progress-step active">1</div>
+        <div class="progress-step active">2</div>
+        <div class="progress-step active">3</div>
+        <div class="progress-step">4</div>
+        <div class="progress-step">5</div>
+    </div>
+
+    <div class="container">
+        <h2>Government ID Verification</h2>
+        <form action="/id-verification" method="POST">
+
+            <input type="text" class="input-box" placeholder="Aadhaar Number" required>
+            <input type="text" class="input-box" placeholder="PAN Card Number" required>
+            <input type="file" class="file-upload" required><br><br>
+            <button type="submit" class="next-button">Next</button>
+        </form>
+    </div>
+
+</body>
+</html>
